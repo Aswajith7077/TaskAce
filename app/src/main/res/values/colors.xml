@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#FF151434</color>
+    <color name="transucent_white">#99FFFFFF</color>
+    <color name="transparent_white">#44FFFFFF</color>
+    <color name="button_color1">#FF2abde3</color>
+    <color name="card_color">#FF1f1d4c</color>
+    <color name="card_blue">#FF363fe9</color>
+    <color name="button_color2">#27274E</color>
+    <color name="button_stroke2">#FF3a3a56</color>
+    <color name="red">#FFFF0000</color>
+    <color name="priority_color1">#FFc9256c</color>
+    <color name="priority_color2">#FF06798b</color>
+    <color name="priority_color3">#FF0d337e</color>
+</resources>

@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".TaskViewer">
+    <RelativeLayout
+        android:id="@+id/task_viewer_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/task_viewer_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Task Details"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/task_viewer_back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginVertical="10dp"
+            android:padding="5dp"
+            android:src="@drawable/back" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@id/task_viewer_nav_bar">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/task_viewer_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/task_viewer_header_background"
+                android:paddingBottom="30dp"
+                android:layout_marginHorizontal="20dp">
+
+                <!--        <ImageView-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="240dp"-->
+                <!--            android:background="@drawable/task_viewer_header_background"-->
+                <!--            android:clipToOutline="true"-->
+                <!--            android:scaleType="centerCrop"-->
+                <!--            android:src="@drawable/task_viewer_bg" />-->
+
+
+
+
+                <TextView
+                    android:id="@+id/task_viewer_task_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:minHeight="70dp"
+                    android:text="Sample Heading "
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/text_viewer_due_date_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/task_viewer_task_title"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/source_sans"
+                    android:text="Due date "
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/task_viewer_due_time_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/text_viewer_due_date_heading"
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/alarm_clock" />
+
+                <TextView
+                    android:id="@+id/task_viewer_last_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_viewer_due_date_heading"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/task_viewer_due_time_icon"
+                    android:fontFamily="@font/source_sans"
+                    android:text="12:30"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/task_viewer_due_date_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/text_viewer_due_date_heading"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@id/task_viewer_last_time"
+                    android:src="@drawable/calendar" />
+
+                <TextView
+                    android:id="@+id/task_viewer_last_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_viewer_due_date_heading"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/task_viewer_due_date_icon"
+                    android:fontFamily="@font/source_sans"
+                    android:text="12-29-2024"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/task_viewer_started_on_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_header"
+                android:layout_marginTop="25dp"
+                android:gravity="center_vertical"
+                android:weightSum="14">
+
+                <TextView
+                    android:id="@+id/task_viewer_started_on_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_weight="9"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Started On"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/task_viewer_started_on_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/source_sans"
+                    android:text="05-22-2024 GMT +05:30 14:20"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_viewer_ending_at_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_started_on_layout"
+                android:gravity="center_vertical"
+                android:weightSum="14">
+
+                <TextView
+                    android:id="@+id/task_viewer_ending_at_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_weight="9"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Ending At"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/task_viewer_ending_at_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/source_sans"
+                    android:text="06-30-2024 GMT +05:30 22:20"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_viewer_duration_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_ending_at_layout"
+                android:gravity="center_vertical"
+                android:weightSum="14">
+
+                <TextView
+                    android:id="@+id/task_viewer_duration_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_weight="9"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Duration"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/task_viewer_duration_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/source_sans"
+                    android:text="30 days 5 hours"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_viewer_priority_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_duration_layout"
+                android:gravity="center_vertical"
+                android:weightSum="14">
+
+                <TextView
+                    android:id="@+id/task_viewer_priority_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Priority"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/task_viewer_priority_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/priority_bg3"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:padding="10dp"
+                    android:text="High"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_viewer_status_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_priority_layout"
+                android:gravity="center_vertical"
+                android:weightSum="14">
+
+                <TextView
+                    android:id="@+id/task_viewer_status_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_weight="9"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Status"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/task_viewer_status_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/source_sans_bold"
+                    android:text="On Progress"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/task_viewer_progress_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_status_layout"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Progress"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+
+            <LinearLayout
+                android:id="@+id/task_viewer_progress_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_progress_heading"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:weightSum="4"
+                >
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/task_viewer_progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:trackCornerRadius="10dp"
+                    app:trackThickness="10dp"
+                    android:progress="52"
+                    app:indicatorColor="@color/button_color1"
+                    app:trackColor="@color/background"
+                    />
+                <TextView
+                    android:id="@+id/task_viewer_progress_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="52%"
+                    android:layout_weight="3"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/task_viewer_description_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_progress_layout"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Description"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/task_viewer_description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_description_heading"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/source_sans"
+                android:text="This is a sample description"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/task_viewer_sub_task_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_description_text"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Sub Tasks"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_viewer_sub_task_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_sub_task_heading"
+                android:layout_marginTop="15dp"
+                />
+            <TextView
+                android:id="@+id/task_viewer_attachment_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_sub_task_recycler_view"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Attachments"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_viewer_attachment_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_attachment_heading"
+                android:layout_marginTop="15dp"
+                />
+            <TextView
+                android:id="@+id/task_viewer_referal_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_attachment_recycler_view"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Referals"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_viewer_referal_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_viewer_referal_heading"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:id="@+id/task_viewer_availablity_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Referals Available"
+                android:layout_below="@id/task_viewer_referal_recycler_view"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans"
+                android:textAlignment="center"
+                android:visibility="gone"
+                android:layout_marginVertical="15dp"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/task_viewer_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_below="@id/task_viewer_availablity_text"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/task_viewer_edit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Edit Task"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/task_viewer_remove_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/priority_bg3"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Remove Task"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

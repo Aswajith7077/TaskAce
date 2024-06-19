@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true"
+    tools:context=".CreateProgressiveTask"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/create_task_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Create Task"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:textSize="28dp" />
+
+
+        <TextView
+            android:id="@+id/task_name_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Task Name"
+            android:layout_below="@id/create_task_heading"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <RelativeLayout
+            android:id="@+id/task_name_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_name_heading"
+            android:layout_marginBottom="5dp">
+
+            <EditText
+                android:id="@+id/task_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="30dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/input_bg2"
+                android:fontFamily="@font/source_sans"
+                android:hint="Task Name"
+                android:inputType="textEmailAddress"
+                android:paddingVertical="15dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="170dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/transucent_white"
+                android:textSize="16dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_description_button"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/button_bg2"
+                android:fontFamily="@font/source_sans_semibold"
+                android:paddingHorizontal="20dp"
+                android:text="Add Description"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/task_name_error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration : 2 days 10 hours 56 minutes"
+            android:textColor="@color/red"
+            android:fontFamily="@font/source_sans"
+            android:textSize="16dp"
+            android:layout_below="@id/task_name_layout"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="30dp"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:id="@+id/task_drop_down_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_name_error_text"
+            android:layout_marginHorizontal="30dp"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/task_type_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_drop_down_layout"
+
+                android:layout_weight="3"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Task Type "
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/task_drop_down"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="2"
+                android:background="@drawable/drop_down_bg"
+                android:layout_marginVertical="5dp"
+                android:paddingHorizontal="15dp"
+                tools:listitem="@layout/drop_down_layout" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/task_description_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_drop_down_layout"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Task Description"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/task_description_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_below="@id/task_description_heading"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/input_bg2"
+            android:visibility="gone">
+
+
+            <!--        <ScrollView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="match_parent">-->
+
+            <EditText
+                android:id="@+id/task_description_input"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="4dp"
+                android:background="#00000000"
+                android:fontFamily="@font/source_sans"
+                android:hint="Task Description"
+                android:inputType="textMultiLine"
+                android:maxHeight="150dp"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/transucent_white"
+                android:textSize="16dp"
+                android:lines="4"
+                android:gravity="top"
+                android:overScrollMode="always"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="insideInset"
+                android:scrollHorizontally="false"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/remove_description_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/button_bg2"
+                android:fontFamily="@font/source_sans_semibold"
+                android:paddingHorizontal="20dp"
+                android:text="Remove Description"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <!--        </ScrollView>-->
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/task_description_error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration : 2 days 10 hours 56 minutes"
+            android:textColor="@color/red"
+            android:fontFamily="@font/source_sans"
+            android:textSize="16dp"
+            android:layout_below="@id/task_description_layout"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="30dp"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:id="@+id/time_heading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_description_error_text"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/start_time_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Start Time"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                />
+
+            <TextView
+                android:id="@+id/end_time_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="End Time"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_heading_layout"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="5dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/start_time_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/input_bg2"
+                android:drawableLeft="@drawable/time"
+                android:fontFamily="@font/source_sans"
+                android:paddingLeft="30dp"
+                android:paddingRight="10dp"
+                android:text="00:00"
+                android:textAllCaps="false"
+                android:textColor="@color/transucent_white"
+                android:textSize="20dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/end_time_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/input_bg2"
+                android:drawableLeft="@drawable/time"
+                android:fontFamily="@font/source_sans"
+                android:paddingLeft="30dp"
+                android:paddingRight="10dp"
+                android:text="00:00"
+                android:textAllCaps="false"
+                android:textColor="@color/transucent_white"
+                android:textSize="20dp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/time_error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration : 2 days 10 hours 56 minutes"
+            android:textColor="@color/red"
+            android:fontFamily="@font/source_sans"
+            android:textSize="16dp"
+            android:layout_below="@id/time_layout"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="30dp"
+            android:visibility="gone"
+            />
+        <LinearLayout
+            android:id="@+id/daily_drop_down_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_error_text"
+            android:layout_marginHorizontal="30dp"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/daily_type_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/task_drop_down_layout"
+
+                android:layout_weight="3"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Task Type "
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/dialy_drop_down"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="2"
+                android:background="@drawable/drop_down_bg"
+                android:layout_marginVertical="5dp"
+                android:paddingHorizontal="15dp"
+                tools:listitem="@layout/drop_down_layout" />
+
+        </LinearLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/set_date_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/daily_drop_down_layout"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_bg2"
+            android:fontFamily="@font/source_sans_semibold"
+            android:paddingHorizontal="25dp"
+            android:text="Set Start/End Dates"
+            android:layout_marginVertical="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:id="@+id/date_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/set_date_button"
+            android:layout_marginHorizontal="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:gravity="center"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/start_date_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Start Date"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/start_date_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/time_layout"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/source_sans"
+                    android:textColor="@color/transucent_white"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/input_bg2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:gravity="center"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/end_date_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="End Date"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/end_date_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/time_layout"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/source_sans"
+                    android:textColor="@color/transucent_white"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/input_bg2" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/duration_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration : 2 days 10 hours 56 minutes"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans"
+                android:textSize="16dp"
+                android:layout_marginVertical="5dp"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/sub_task_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date_layout"
+            >
+            <TextView
+                android:id="@+id/sub_task_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub Tasks"
+                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_semibold"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sub_task_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sub_task_heading"
+                android:nestedScrollingEnabled="false"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_sub_task_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/sub_task_recycler_view"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_bg2"
+                android:fontFamily="@font/source_sans_semibold"
+                android:paddingHorizontal="25dp"
+                android:text="Add Sub Tasks"
+                android:layout_marginVertical="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/add_sub_task_error_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration : 2 days 10 hours 56 minutes"
+                android:textColor="@color/red"
+                android:layout_below="@id/add_sub_task_button"
+                android:fontFamily="@font/source_sans"
+                android:textSize="16dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="5dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/attachments_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sub_task_layout">
+            <TextView
+                android:id="@+id/attachments_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attachments"
+                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_semibold"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/attachments_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/attachments_heading"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginHorizontal="15dp"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_attachments_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/attachments_recycler_view"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_bg2"
+                android:fontFamily="@font/source_sans_semibold"
+                android:paddingHorizontal="25dp"
+                android:text="Add Attachment"
+                android:layout_marginVertical="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/referal_link_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/attachments_layout">
+            <TextView
+                android:id="@+id/referals_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Referal Links"
+                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/source_sans_semibold"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/referals_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/referals_heading"
+                android:nestedScrollingEnabled="false"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_referals_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/referals_recycler_view"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_bg2"
+                android:fontFamily="@font/source_sans_semibold"
+                android:paddingHorizontal="25dp"
+                android:text="Add Referal Link"
+                android:layout_marginVertical="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/priority_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Priority"
+            android:layout_below="@id/referal_link_layout"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:id="@+id/priority_button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priority_heading"
+            android:layout_marginHorizontal="30dp"
+            android:weightSum="3"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/priority_low_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/priority_bg1"
+                android:text="Low"
+                android:fontFamily="@font/source_sans_semibold"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:layout_marginVertical="10dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/priority_medium_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/priority_bg2"
+                android:text="Medium"
+                android:fontFamily="@font/source_sans_semibold"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:layout_marginVertical="10dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/priority_high_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/priority_bg3"
+                android:text="High"
+                android:fontFamily="@font/source_sans_semibold"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:layout_marginVertical="10dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/priority_error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration : 2 days 10 hours 56 minutes"
+            android:textColor="@color/red"
+            android:layout_below="@id/priority_button_layout"
+            android:layout_marginHorizontal="30dp"
+            android:fontFamily="@font/source_sans"
+            android:textSize="16dp"
+            android:layout_marginVertical="5dp"
+            android:visibility="gone"
+            />
+        <LinearLayout
+            android:id="@+id/timer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priority_error_text"
+            android:weightSum="4"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/timer_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Set Timer For this task"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:textSize="16dp" />
+            <Switch
+                android:id="@+id/timer_switch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginRight="30dp"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_bg"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/alarm_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timer_layout"
+            android:weightSum="4"
+
+            >
+            <TextView
+                android:id="@+id/alarm_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Set alarm before 10 minutes"
+                android:layout_below="@id/date_layout"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:textSize="16dp" />
+            <Switch
+                android:id="@+id/alarm_switch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginRight="30dp"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_bg"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/notification_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alarm_layout"
+            android:weightSum="4"
+            >
+            <TextView
+                android:id="@+id/notification_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="Get Notification from this Task"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:textSize="16dp" />
+            <Switch
+                android:id="@+id/notification_switch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginRight="30dp"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_bg"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_and_create"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/button_bg"
+            android:text="Save and Create"
+            android:layout_below="@id/notification_layout"
+            android:fontFamily="@font/source_sans_semibold"
+            android:textAllCaps="false"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
+            />
+    </RelativeLayout>
+
+</ScrollView>

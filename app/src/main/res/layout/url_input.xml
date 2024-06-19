@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:background="@drawable/enter_url_bg"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/referal_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/source_sans_semibold"
+        android:text="Enter an URL"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="22dp" />
+
+    <EditText
+        android:id="@+id/referal_url_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/referal_heading"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/input_bg2"
+        android:fontFamily="@font/source_sans"
+        android:hint="Enter URL"
+        android:inputType="textLongMessage"
+        android:paddingHorizontal="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/transucent_white"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:id="@+id/referal_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/referal_url_input"
+        android:layout_marginTop="30dp"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/referal_save_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg2"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/referal_discard_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@color/background"
+            android:fontFamily="@font/source_sans_semibold"
+            android:text="Discard"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

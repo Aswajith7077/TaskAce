@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubTaskBottomSheet">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        >
+
+
+        <RelativeLayout
+            android:id="@+id/create_sub_task_header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            >
+            <TextView
+                android:id="@+id/create_sub_task_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Sub Task"
+                android:textColor="@color/white"
+                android:textSize="26dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/source_sans_semibold"
+                />
+            <ImageView
+                android:id="@+id/create_sub_task_close_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="15dp"
+                android:src="@drawable/close"
+                android:padding="10dp"
+                />
+        </RelativeLayout>
+
+
+
+        <ScrollView
+            android:id="@+id/create_sub_task_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_below="@id/create_sub_task_header_layout">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background">
+
+                <TextView
+                    android:id="@+id/sub_task_name_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="5dp"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Sub Task Name"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/sub_task_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/sub_task_name_heading"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/input_bg2"
+                    android:fontFamily="@font/source_sans"
+                    android:hint="Sub Task Name"
+                    android:paddingHorizontal="25dp"
+                    android:textColorHint="@color/transucent_white"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/sub_task_name_error_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration : 2 days 10 hours 56 minutes"
+                    android:textColor="@color/red"
+                    android:fontFamily="@font/source_sans"
+                    android:textSize="16dp"
+                    android:layout_below="@id/sub_task_name_input"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:id="@+id/sub_task_description_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub_task_name_error_text"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Sub Task Description"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <RelativeLayout
+                    android:id="@+id/sub_task_description_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:layout_below="@id/sub_task_description_heading"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/input_bg2">
+
+
+                    <!--        <ScrollView-->
+                    <!--            android:layout_width="match_parent"-->
+                    <!--            android:layout_height="match_parent">-->
+
+                    <EditText
+                        android:id="@+id/sub_task_description_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="#00000000"
+                        android:fontFamily="@font/source_sans"
+                        android:gravity="top"
+                        android:hint="Sub Task Description"
+                        android:inputType="textMultiLine"
+                        android:lines="4"
+                        android:maxHeight="120dp"
+                        android:overScrollMode="always"
+                        android:paddingHorizontal="25dp"
+                        android:paddingVertical="15dp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:scrollHorizontally="false"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/transucent_white"
+                        android:textSize="16dp" />
+
+                    <!--        </ScrollView>-->
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/sub_task_description_error_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration : 2 days 10 hours 56 minutes"
+                    android:textColor="@color/red"
+                    android:fontFamily="@font/source_sans"
+                    android:textSize="16dp"
+                    android:layout_below="@id/sub_task_description_layout"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:visibility="gone"
+                    />
+                <LinearLayout
+                    android:id="@+id/time_heading_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub_task_description_error_text"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="5dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/start_time_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/source_sans_semibold"
+                        android:text="Start Time"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/end_time_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/source_sans_semibold"
+                        android:text="End Time"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/sub_task_time_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time_heading_layout"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="5dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/start_time_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/input_bg2"
+                        android:drawableLeft="@drawable/time"
+                        android:fontFamily="@font/source_sans"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="10dp"
+                        android:text="00:00"
+                        android:textAllCaps="false"
+                        android:textColor="@color/transucent_white"
+                        android:textSize="20dp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/end_time_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/input_bg2"
+                        android:drawableLeft="@drawable/time"
+                        android:fontFamily="@font/source_sans"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="10dp"
+                        android:text="00:00"
+                        android:textAllCaps="false"
+                        android:textColor="@color/transucent_white"
+                        android:textSize="20dp" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/sub_task_time_error_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration : 2 days 10 hours 56 minutes"
+                    android:textColor="@color/red"
+                    android:fontFamily="@font/source_sans"
+                    android:textSize="16dp"
+                    android:layout_below="@id/sub_task_time_layout"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:visibility="gone"
+                    />
+
+                <TextView
+                    android:id="@+id/note_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub_task_time_error_text"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/source_sans"
+                    android:text="Note : \nThe date and time should lie inside the overall time of the progressive task."
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sub_task_set_date_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/note_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_bg2"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:paddingHorizontal="25dp"
+                    android:text="Set Start/End Dates"
+                    android:layout_marginVertical="5dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:id="@+id/sub_task_date_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub_task_set_date_button"
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:gravity="center"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/sub_task_start_date_heading"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/source_sans_semibold"
+                            android:text="Start Date"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/sub_task_start_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_below="@id/time_layout"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/source_sans"
+                            android:textColor="@color/transucent_white"
+                            android:textSize="20dp"
+                            android:gravity="center"
+                            android:background="@drawable/input_bg2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:gravity="center"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/sub_task_end_date_heading"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/source_sans_semibold"
+                            android:text="End Date"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/sub_task_end_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_below="@id/time_layout"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/source_sans"
+                            android:textColor="@color/transucent_white"
+                            android:textSize="20dp"
+                            android:gravity="center"
+                            android:background="@drawable/input_bg2" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/sub_task_duration_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:fontFamily="@font/source_sans"
+                        android:text="Duration : 2 days 10 hours 56 minutes"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/sub_task_priority_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:text="Priority"
+                    android:layout_below="@id/sub_task_date_layout"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:id="@+id/sub_task_priority_button_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub_task_priority_heading"
+                    android:layout_marginHorizontal="30dp"
+                    android:weightSum="3"
+                    >
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/priority_low_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/priority_bg1"
+                        android:text="Low"
+                        android:fontFamily="@font/source_sans_semibold"
+                        android:textAllCaps="false"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:layout_marginVertical="10dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="5dp"
+                        />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/priority_medium_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/priority_bg2"
+                        android:text="Medium"
+                        android:fontFamily="@font/source_sans_semibold"
+                        android:textAllCaps="false"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:layout_marginVertical="10dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="5dp"
+                        />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/priority_high_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/priority_bg3"
+                        android:text="High"
+                        android:fontFamily="@font/source_sans_semibold"
+                        android:textAllCaps="false"
+                        android:textSize="16dp"
+                        android:textColor="@color/white"
+                        android:layout_marginVertical="10dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="5dp"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/sub_task_priority_error_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration : 2 days 10 hours 56 minutes"
+                    android:textColor="@color/red"
+                    android:layout_below="@id/sub_task_priority_button_layout"
+                    android:layout_marginHorizontal="30dp"
+                    android:fontFamily="@font/source_sans"
+                    android:textSize="16dp"
+                    android:layout_marginVertical="5dp"
+                    android:visibility="gone"
+                    />
+
+
+                <LinearLayout
+                    android:id="@+id/sub_task_notification_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub_task_priority_error_text"
+                    android:weightSum="4"
+                    >
+                    <TextView
+                        android:id="@+id/sub_task_notification_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/source_sans_semibold"
+                        android:text="Get Notification from this Task"
+                        android:layout_below="@id/sub_task_date_layout"
+                        android:textColor="@color/white"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginVertical="10dp"
+                        android:textSize="18dp" />
+                    <Switch
+                        android:id="@+id/sub_task_notification_switch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:layout_marginRight="30dp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_bg"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sub_task_save_and_create"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/button_bg"
+                    android:text="Save and Create"
+                    android:layout_below="@id/sub_task_notification_layout"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="15dp"
+                    />
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</FrameLayout>

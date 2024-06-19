@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/input_bg2"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="15dp">
+    <TextView
+        android:id="@+id/referal_link"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:scrollHorizontally="true"
+        android:text="https://www.google.com"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginVertical="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        />
+    <ImageView
+        android:id="@+id/referal_copy_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_bg3"
+        android:layout_toLeftOf="@id/referal_delete_button"
+        android:src="@drawable/copy"
+        android:padding="12dp"
+        android:layout_marginHorizontal="5dp"
+        />
+    <ImageView
+        android:id="@+id/referal_delete_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_bg3"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/trash_bin"
+        android:padding="12dp"
+        />
+
+
+</RelativeLayout>

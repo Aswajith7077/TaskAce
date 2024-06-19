@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nav_bar"
+        />
+
+    <LinearLayout
+        android:id="@+id/nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/home_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/home"
+                android:padding="15dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+
+                />
+            <View
+                android:id="@+id/dash_home"
+                android:layout_width="15dp"
+                android:layout_height="4dp"
+                android:background="@drawable/button_bg"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/home_button"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/new_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:src="@drawable/plus"
+            android:padding="20dp"
+            android:layout_margin="10dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/profile_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/user"
+                android:padding="15dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+            <View
+                android:id="@+id/dash_profile"
+                android:layout_width="15dp"
+                android:layout_height="4dp"
+                android:background="@drawable/button_bg"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/profile_button"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

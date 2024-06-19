@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sub_task_recycler_bg"
+    android:layout_marginHorizontal="30dp"
+    android:layout_marginVertical="5dp">
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/create_task_recycler_layout_task_heading"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Task Heading"
+        android:fontFamily="@font/source_sans_semibold"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="25dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/create_task_recycler_layout_priority_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="priority"
+        android:textColor="@color/white"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/priority_bg3"
+        android:paddingVertical="7dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/source_sans_semibold"
+        android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="15dp"
+        />
+
+
+    <TextView
+        android:id="@+id/create_task_recycler_layout_starting_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Starting From : 12-29-2024 GMT+ 05:30 02:30"
+        android:textColor="@color/white"
+        android:layout_below="@id/create_task_recycler_layout_task_heading"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginBottom="5dp"
+        android:textSize="14dp"
+        android:layout_marginHorizontal="25dp"
+        />
+    <TextView
+        android:id="@+id/create_task_recycler_layout_ending_at"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ending At : 12-29-2024 GMT+ 05:30 02:30"
+        android:textColor="@color/white"
+        android:layout_below="@id/create_task_recycler_layout_starting_from"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginBottom="5dp"
+        android:textSize="14dp"
+        android:layout_marginHorizontal="25dp"
+        />
+    <TextView
+        android:id="@+id/create_task_recycler_layout_task_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Duration : 2 days 10 hours 54 minutes"
+        android:textColor="@color/white"
+        android:layout_below="@id/create_task_recycler_layout_ending_at"
+        android:layout_marginHorizontal="25dp"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginBottom="15dp"
+        android:textSize="14dp"
+
+        />
+    <LinearLayout
+        android:id="@+id/create_task_recycler_layout_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_below="@id/create_task_recycler_layout_task_duration">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_task_recycler_layout_edit_sub_task_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Edit Task"
+            android:textSize="14dp"
+            android:textAllCaps="false"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/button_bg2"
+            android:textColor="@color/white"
+            android:fontFamily="@font/source_sans_semibold"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_task_recycler_layout_remove_sub_task_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Remove Task"
+            android:textSize="14dp"
+            android:textAllCaps="false"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/button_bg2"
+            android:textColor="@color/white"
+            android:fontFamily="@font/source_sans_semibold"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

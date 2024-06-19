@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074593546299",
+    "project_id": "task-ace",
+    "storage_bucket": "task-ace.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074593546299:android:696081359a4a92a4f09c1e",
+        "android_client_info": {
+          "package_name": "com.example.tasker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSz7GVheyYIoZ1H8yDGHqKuytH3x2AR4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

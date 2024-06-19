@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/referal_read_link_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:background="@drawable/input_bg2"
+    android:layout_marginVertical="5dp">
+    <TextView
+        android:id="@+id/referal_read_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://www.google.com/"
+        android:layout_margin="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/source_sans"
+        />
+</RelativeLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MyProfilePage">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/my_profile_user_background"
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:src="@drawable/bio_image"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:id="@+id/my_profile_user_profile"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:padding="10dp"
+                android:src="@drawable/profile_user" />
+
+            <TextView
+                android:id="@+id/my_profile_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/my_profile_user_profile"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/source_sans_semibold"
+                android:text="User Name"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/my_profile_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/my_profile_user_name"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/source_sans"
+                android:text="sample@email.com"
+                android:textColor="@color/transucent_white"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:id="@+id/my_profile_connection_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/my_profile_user_email"
+                android:layout_marginVertical="25dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/my_profile_mutual_connections"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="57\nMutual"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/source_sans_semibold"/>
+
+                <View
+                    android:id="@+id/my_profile_line1"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:background="@drawable/line_bg" />
+
+                <TextView
+                    android:id="@+id/my_profile_followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="68\nFollowers"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/source_sans_semibold"/>
+
+                <View
+                    android:id="@+id/my_profile_line2"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:background="@drawable/line_bg" />
+
+                <TextView
+                    android:id="@+id/my_profile_following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="107\nFollowing"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/source_sans_semibold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/my_profile_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/my_profile_connection_layout"
+                android:gravity="center">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/my_profile_edit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_bg"
+                    android:text="Edit Profile"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="35dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:layout_margin="5dp"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/my_profile_friends_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_bg2"
+                    android:text="My Friends"
+                    android:textAllCaps="false"
+                    android:textSize="14dp"
+                    android:paddingHorizontal="35dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:layout_margin="5dp"
+                    />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_bg3"
+                    android:layout_margin="5dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/my_profile_add_bio_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/input_bg2"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/my_profile_button_layout"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/source_sans"
+                    android:textAlignment="center"
+                    android:text="@string/add_bio_text"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/my_profile_add_bio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Add Bio"
+                    android:textAllCaps="false"
+                    android:layout_weight="7"
+                    android:background="@drawable/button_bg2"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/source_sans_semibold"
+                    android:layout_marginRight="20dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/my_profile_about_me_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Me"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:layout_below="@id/my_profile_add_bio_layout"
+                android:layout_marginVertical="15dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/source_sans_semibold"
+                />
+            <TextView
+                android:id="@+id/my_profile_about_me_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_below="@id/my_profile_about_me_heading"
+                android:layout_marginBottom="15dp"
+                android:textSize="16dp"
+                android:text="This is a sample paragraph about me."
+                android:fontFamily="@font/source_sans"
+                android:textColor="@color/white"
+                android:justificationMode="inter_word"
+                tools:targetApi="o" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/my_profile_log_out_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginVertical="15dp"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:layout_below="@id/my_profile_about_me_text"
+                android:fontFamily="@font/source_sans_semibold"
+                android:layout_marginHorizontal="30dp"
+                android:background="@drawable/priority_bg3"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/attachment1"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_weight="1"
+    android:background="@drawable/input_bg2"
+    android:paddingTop="15dp">
+
+    <ImageView
+        android:id="@+id/attachment_icon1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/pdf" />
+
+    <TextView
+        android:id="@+id/attachment_file_name1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/attachment_icon1"
+        android:fontFamily="@font/source_sans_semibold"
+        android:minHeight="40dp"
+        android:text="File Name"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/attachment_remove_button1"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/attachment_file_name1"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_bg2"
+        android:fontFamily="@font/source_sans_semibold"
+        android:text="Remove"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+</RelativeLayout>
+
+
