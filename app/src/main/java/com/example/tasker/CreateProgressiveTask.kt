@@ -199,8 +199,10 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
                             createProgressiveTaskBinding.addSubTaskButton.visibility = View.VISIBLE
                             createProgressiveTaskBinding.alarmLayout.visibility = View.GONE
                             createProgressiveTaskBinding.timerLayout.visibility = View.GONE
-                            startDate = null
-                            endDate = null
+                            if(!isEditTask) {
+                                startDate = null
+                                endDate = null
+                            }
                         }
 
                         1 -> {
@@ -219,8 +221,10 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
                             createProgressiveTaskBinding.timerLayout.visibility = View.VISIBLE
                             createProgressiveTaskBinding.addSubTaskButton.visibility = View.GONE
                             createProgressiveTaskBinding.dailyDropDownLayout.visibility = View.GONE
-                            startDate = null
-                            endDate = null
+                            if(!isEditTask) {
+                                startDate = null
+                                endDate = null
+                            }
                         }
                     }
                     validateDate(startTime, endTime, startDate, endDate)
@@ -252,8 +256,10 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
                         else -> {
                             createProgressiveTaskBinding.dateLayout.visibility = View.VISIBLE
                             createProgressiveTaskBinding.setDateButton.visibility = View.VISIBLE
+                            if(!isEditTask){
                             startDate = null
                             endDate = null
+                                }
                         }
                     }
                     validateDate(startTime, endTime, startDate, endDate)
@@ -298,12 +304,21 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
                             createProgressiveTaskBinding.timerSwitch.isChecked
                         )
 
-                        for (subTask in subTaskArrayList) {
-                            val subTaskId = database.child(SubTaskElements.TASK_TYPE_SUB_TASK).child(auth.currentUser!!.uid)
-                                .child(taskId!!).push().key
-                            subTask.subTaskId = subTaskId
-                            database.child(SubTaskElements.TASK_TYPE_SUB_TASK).child(auth.currentUser!!.uid).child(taskId!!)
-                                .child(subTaskId!!).setValue(subTask)
+                        for (i in subTaskArrayList.indices) {
+
+                            if(subTaskArrayList[i].subTaskId != null) {
+                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+                                    .child(auth.currentUser!!.uid).child(taskId!!)
+                                    .child(subTaskArrayList[i].subTaskId!!).setValue(subTaskArrayList[i])
+                            }else{
+                                subTaskArrayList[i].subTaskId =
+                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+                                    .child(auth.currentUser!!.uid).child(taskId!!)
+                                    .push().key!!
+                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+                                    .child(auth.currentUser!!.uid).child(taskId!!)
+                                    .child(subTaskArrayList[i].subTaskId!!).setValue(subTaskArrayList[i])
+                            }
                         }
 
                         for (i in attachmentUris.indices) {
@@ -512,6 +527,7 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
 
         createProgressiveTaskBinding.taskNameInput.text =
             Editable.Factory.getInstance().newEditable(temp[ProgressiveTaskElements.NAME_KEY].toString())
+        descriptionEnabled = temp.containsKey(ProgressiveTaskElements.DESCRIPTION_KEY)
         if (temp.containsKey(ProgressiveTaskElements.DESCRIPTION_KEY)) {
             createProgressiveTaskBinding.taskDescriptionInput.text =
                 Editable.Factory.getInstance().newEditable(temp[ProgressiveTaskElements.DESCRIPTION_KEY].toString())
@@ -519,9 +535,22 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
         }
 
         createProgressiveTaskBinding.startDateText.text = temp[ProgressiveTaskElements.START_DATE_KEY].toString()
+        createProgressiveTaskBinding.startDateText.setTextColor(0xFFFFFFFF.toInt())
+
         createProgressiveTaskBinding.endDateText.text = temp[ProgressiveTaskElements.END_DATE_KEY].toString()
+        createProgressiveTaskBinding.endDateText.setTextColor(0xFFFFFFFF.toInt())
+
         createProgressiveTaskBinding.startTimeButton.text = temp[ProgressiveTaskElements.START_TIME_KEY].toString()
+        createProgressiveTaskBinding.startTimeButton.setTextColor(0xFFFFFFFF.toInt())
+
         createProgressiveTaskBinding.endTimeButton.text = temp[ProgressiveTaskElements.END_TIME_KEY].toString()
+        createProgressiveTaskBinding.endTimeButton.setTextColor(0xFFFFFFFF.toInt())
+
+
+        startDate = temp[ProgressiveTaskElements.START_DATE_KEY].toString()
+        endDate = temp[ProgressiveTaskElements.END_DATE_KEY].toString()
+        startTime = temp[ProgressiveTaskElements.START_TIME_KEY].toString()
+        endTime = temp[ProgressiveTaskElements.END_TIME_KEY].toString()
 
         val listener = object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -542,34 +571,89 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
 
         }
 
-//        val attachmentListener = object:ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                val hash = snapshot.value!! as HashMap<*,*>
-//                if(hash.isEmpty())
-//                    return
-//                else if(hash.containsKey(ProgressiveTaskElements.ID_KEY)){
-//                    val attachment = snapshot.value!! as AttachmentElements
-//                    attachmentArrayList.add(attachment)
-//                }else{
-//                    hash.forEach {
-//                        val attachment = it.value!! as AttachmentElements
-//                        attachmentArrayList.add(attachment)
-//                    }
-//                }
-//                onDataUpdated()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {}
-//        }
+        val attachmentListener = object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value == null)
+                    return
+                val hash = snapshot.value!! as List<*>
+                if(hash.isEmpty())
+                    return
+                else {
+                    for(i in hash.indices) {
+                        initializeAttachment(hash[i] as HashMap<*,*>)
+                    }
+                }
+                onDataUpdated()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        }
+
+        val referalListener = object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value == null)
+                    return
+                val hash = snapshot.value!! as List<*>
+                if(hash.isEmpty())
+                    return
+                else {
+                    for(i in hash.indices) {
+                        referalArrayList.add(hash[i] as String?)
+                    }
+                }
+                onDataUpdated()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        }
+
+        when(temp[ProgressiveTaskElements.PRIORITY_KEY].toString().toInt()){
+            SubTaskElements.PRIORITY_HIGH -> {
+                createProgressiveTaskBinding.priorityLowButton.setBackgroundResource(R.drawable.unselected_priority)
+                createProgressiveTaskBinding.priorityMediumButton.setBackgroundResource(R.drawable.unselected_priority)
+                createProgressiveTaskBinding.priorityHighButton.setBackgroundResource(R.drawable.priority_bg3)
+                prioritySelected = SubTaskElements.PRIORITY_HIGH
+            }
+            SubTaskElements.PRIORITY_MEDIUM -> {
+                createProgressiveTaskBinding.priorityLowButton.setBackgroundResource(R.drawable.unselected_priority)
+                createProgressiveTaskBinding.priorityMediumButton.setBackgroundResource(R.drawable.priority_bg2)
+                createProgressiveTaskBinding.priorityHighButton.setBackgroundResource(R.drawable.unselected_priority)
+                prioritySelected = SubTaskElements.PRIORITY_MEDIUM
+            }
+            else -> {
+                createProgressiveTaskBinding.priorityLowButton.setBackgroundResource(R.drawable.priority_bg1)
+                createProgressiveTaskBinding.priorityMediumButton.setBackgroundResource(R.drawable.unselected_priority)
+                createProgressiveTaskBinding.priorityHighButton.setBackgroundResource(R.drawable.unselected_priority)
+                prioritySelected = SubTaskElements.PRIORITY_LOW
+            }
+        }
+        prioritySelected = temp[ProgressiveTaskElements.PRIORITY_KEY].toString().toInt()
+
+        createProgressiveTaskBinding.notificationSwitch.isChecked = temp[ProgressiveTaskElements.NOTIFICATION_KEY].toString().toBoolean()
 
 
-//        database.child(SubTaskElements.TASK_TYPE_PROGRESSIVE).child(auth.currentUser!!.uid).child(taskId!!).child(ProgressiveTaskElements.ATTACHMENT_KEY).addValueEventListener(attachmentListener)
+        database.child(SubTaskElements.TASK_TYPE_PROGRESSIVE).child(auth.currentUser!!.uid).child(taskId!!).child(ProgressiveTaskElements.ATTACHMENT_KEY).addValueEventListener(attachmentListener)
+        database.child(SubTaskElements.TASK_TYPE_PROGRESSIVE).child(auth.currentUser!!.uid).child(taskId!!).child(ProgressiveTaskElements.REFERAL_KEY).addValueEventListener(referalListener)
         database.child(SubTaskElements.TASK_TYPE_SUB_TASK).child(auth.currentUser!!.uid).child(taskId!!).addValueEventListener(listener)
 
 
 
 
 
+    }
+
+    private fun initializeAttachment(hash: HashMap<*, *>) {
+        val fileName = hash[AttachmentElements.NAME_KEY].toString()
+        val filePath = hash[AttachmentElements.PATH_KEY].toString()
+        val fileType = hash[AttachmentElements.TYPE_KEY].toString().toInt()
+
+
+        val attachmentElement = AttachmentElements(
+            fileName = fileName,
+            filePath = filePath,
+            fileType = fileType
+        )
+        attachmentArrayList.add(attachmentElement)
     }
 
     private fun initializeSubTask(hashMap: HashMap<*, *>) {

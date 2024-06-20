@@ -19,6 +19,11 @@ data class AttachmentElements(
         val UNKNOWN = R.drawable.blank_page
 
 
+        const val NAME_KEY = "fileName"
+        const val PATH_KEY = "filePath"
+        const val TYPE_KEY = "fileType"
+
+
 
         fun findAttachmentIcon(file:String):Int{
             when{

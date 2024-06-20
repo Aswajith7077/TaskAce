@@ -139,7 +139,6 @@ class TaskViewer : AppCompatActivity() {
                 putExtras(bundle)
             }
             startActivity(intent)
-            finish()
         }
 
 
