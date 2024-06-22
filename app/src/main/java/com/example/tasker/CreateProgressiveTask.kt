@@ -131,6 +131,7 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
             GridLayoutManager(this, 2)
         createProgressiveTaskBinding.referalsRecyclerView.layoutManager = LinearLayoutManager(this)
         referalArrayList = arrayListOf()
+        subTaskArrayList = arrayListOf()
         attachmentUris = arrayListOf()
         attachmentArrayList = arrayListOf()
 
@@ -306,19 +307,22 @@ class CreateProgressiveTask(private var currentSelectedItem: Int = 0) : AppCompa
 
                         for (i in subTaskArrayList.indices) {
 
+                            database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+                                .child(auth.currentUser!!.uid).child(taskId!!).removeValue()
+                            
                             if(subTaskArrayList[i].subTaskId != null) {
-                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
-                                    .child(auth.currentUser!!.uid).child(taskId!!)
-                                    .child(subTaskArrayList[i].subTaskId!!).setValue(subTaskArrayList[i])
-                            }else{
                                 subTaskArrayList[i].subTaskId =
-                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
-                                    .child(auth.currentUser!!.uid).child(taskId!!)
-                                    .push().key!!
-                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
-                                    .child(auth.currentUser!!.uid).child(taskId!!)
-                                    .child(subTaskArrayList[i].subTaskId!!).setValue(subTaskArrayList[i])
+                                    database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+                                        .child(auth.currentUser!!.uid).child(taskId!!)
+                                        .push().key!!
+//                                database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+//                                    .child(auth.currentUser!!.uid).child(taskId!!)
+//                                    .child(subTaskArrayList[i].subTaskId!!).setValue(subTaskArrayList[i])
+
                             }
+                            database.child(SubTaskElements.TASK_TYPE_SUB_TASK)
+                                .child(auth.currentUser!!.uid).child(taskId!!)
+                                .child(subTaskArrayList[i].subTaskId!!).setValue(subTaskArrayList[i])
                         }
 
                         for (i in attachmentUris.indices) {

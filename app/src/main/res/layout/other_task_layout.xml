@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/input_bg2"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="20dp">
+
+
+    <RelativeLayout
+        android:id="@+id/other_task_heading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/other_task_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Task Heading"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/source_sans_semibold"
+            android:layout_marginVertical="15dp"
+            android:layout_toLeftOf="@id/other_task_expand_button"
+            android:layout_toRightOf="@id/other_task_check_box"
+            android:layout_centerVertical="true"
+
+            />
+
+        <CheckBox
+            android:id="@+id/other_task_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_check_box_bg"
+            android:background="@color/card_color"
+            />
+
+        <ImageView
+            android:id="@+id/other_task_expand_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_down_sign_to_navigate"
+            android:padding="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginHorizontal="15dp"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/other_task_starting_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Starting From : 12-29-2024 GMT+ 05:30 02:30"
+        android:textColor="@color/white"
+        android:layout_below="@id/other_task_heading_layout"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginBottom="5dp"
+        android:textSize="14dp"
+        android:layout_marginHorizontal="25dp"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/other_task_ending_at"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ending At : 12-29-2024 GMT+ 05:30 02:30"
+        android:textColor="@color/white"
+        android:layout_below="@id/other_task_starting_from"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginBottom="5dp"
+        android:textSize="14dp"
+        android:layout_marginHorizontal="25dp"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/other_task_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Duration : 2 days 10 hours 54 minutes"
+        android:textColor="@color/white"
+        android:layout_below="@id/other_task_ending_at"
+        android:layout_marginHorizontal="25dp"
+        android:fontFamily="@font/source_sans"
+        android:layout_marginBottom="15dp"
+        android:textSize="14dp"
+        android:visibility="gone"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/other_task_view_more_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/button_bg"
+        android:text="View More"
+        android:textColor="@color/white"
+        android:fontFamily="@font/source_sans_semibold"
+        android:textAllCaps="false"
+        android:paddingHorizontal="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/other_task_duration"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

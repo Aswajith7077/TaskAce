@@ -21,5 +21,7 @@ data class DailyTaskElements(
     companion object{
         const val TYPE_DAILY = -72919
         const val TYPE_RANGE = 253048
+
+        const val DAILY_TYPE_KEY = "taskRangeType"
     }
 }

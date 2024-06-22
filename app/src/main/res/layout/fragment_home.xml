@@ -273,6 +273,7 @@
                         android:layout_height="wrap_content" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/add_other_task_button"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:layout_below="@id/no_task_text"

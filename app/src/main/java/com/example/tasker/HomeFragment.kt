@@ -26,10 +26,11 @@ class HomeFragment : Fragment() {
     private lateinit var auth:FirebaseAuth
 
     private lateinit var database:DatabaseReference
-    private var storageReference = Firebase.storage.reference
+//    private var storageReference = Firebase.storage.reference
 
 //    private var progressiveArrayList:ArrayList<ProgressiveTaskElements> = arrayListOf()
     private var homeProgressiveArrayList:ArrayList<HomeProgressiveAdapter.HomeProgressiveElements> = arrayListOf()
+    private var otherTaskArrayList:ArrayList<OtherTaskAdapter.OtherTaskElements> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +40,38 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
         database = Firebase.database.reference
         homeFragmentBinding.progressiveRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-
+        homeFragmentBinding.otherRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val user = auth.currentUser
         homeFragmentBinding.userName.text = user?.email
+
+        val normalTaskListener = object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value == null)
+                    return
+                val temp = snapshot.value as HashMap<*,*>
+                if(temp.isEmpty()){
+                    homeFragmentBinding.noTaskText.visibility = View.VISIBLE
+                    homeFragmentBinding.noTaskImageView.visibility = View.VISIBLE
+                    homeFragmentBinding.addOtherTaskButton.visibility = View.VISIBLE
+                    return
+                }else{
+                    homeFragmentBinding.noTaskText.visibility = View.GONE
+                    homeFragmentBinding.noTaskImageView.visibility = View.GONE
+                    homeFragmentBinding.addOtherTaskButton.visibility = View.GONE
+                }
+
+                if(temp.contains("taskId")){
+                    mapToOtherList(temp)
+                }else{
+                    temp.forEach{
+                        mapToOtherList(it.value as HashMap<*,*>)
+                    }
+                }
+
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        }
 
         val postListener = object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -55,15 +84,14 @@ class HomeFragment : Fragment() {
                     homeFragmentBinding.noProgressiveText.visibility = View.VISIBLE
                     homeFragmentBinding.noProgressiveImageView.visibility = View.VISIBLE
                     homeFragmentBinding.addNewProgressiveButton.visibility = View.VISIBLE
+                    return
                 }else{
                     homeFragmentBinding.noProgressiveText.visibility = View.GONE
                     homeFragmentBinding.noProgressiveImageView.visibility = View.GONE
                     homeFragmentBinding.addNewProgressiveButton.visibility = View.GONE
                 }
 
-                if(map.isEmpty())
-                    return
-                else if(map.containsKey("taskId")){
+                if(map.containsKey("taskId")){
                     mapToArrayList(map)
                 }
                 else{
@@ -80,9 +108,95 @@ class HomeFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
 
         }
+
+        val dailyTaskListener = object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value == null)
+                    return
+
+                val temp = snapshot.value as HashMap<*,*>
+                if(temp.isEmpty()){
+                    homeFragmentBinding.noTaskText.visibility = View.VISIBLE
+                    homeFragmentBinding.noTaskImageView.visibility = View.VISIBLE
+                    homeFragmentBinding.addOtherTaskButton.visibility = View.VISIBLE
+                    return
+                }else{
+                    homeFragmentBinding.noTaskText.visibility = View.GONE
+                    homeFragmentBinding.noTaskImageView.visibility = View.GONE
+                    homeFragmentBinding.addOtherTaskButton.visibility = View.GONE
+                }
+
+                if(temp.contains("taskId")){
+                    mapToDailyOtherList(temp)
+                }else{
+                    temp.forEach{
+                        mapToDailyOtherList(it.value as HashMap<*,*>)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+
+        }
+
+        database.child(SubTaskElements.TASK_TYPE_DAILY).child(auth.currentUser!!.uid).addValueEventListener(dailyTaskListener)
+        database.child(SubTaskElements.TASK_TYPE_NORMAL).child(auth.currentUser!!.uid).addValueEventListener(normalTaskListener)
         database.child(SubTaskElements.TASK_TYPE_PROGRESSIVE).child(auth.currentUser!!.uid).addValueEventListener(postListener)
 
+        homeFragmentBinding.otherRecyclerView.adapter = OtherTaskAdapter(otherTaskArrayList)
+
+
+
         return homeFragmentBinding.root
+    }
+
+    private fun mapToDailyOtherList(temp: HashMap<*, *>) {
+        val taskId = temp[ProgressiveTaskElements.ID_KEY].toString()
+        val taskName = temp[ProgressiveTaskElements.NAME_KEY].toString()
+        val dailyType = temp[DailyTaskElements.DAILY_TYPE_KEY].toString().toInt()
+        val taskStartTime = temp[ProgressiveTaskElements.START_TIME_KEY].toString()
+        val taskEndTime = temp[ProgressiveTaskElements.END_TIME_KEY].toString()
+        val duration = temp[ProgressiveTaskElements.DURATION_KEY].toString()
+
+        val otherTaskElement = OtherTaskAdapter.OtherTaskElements(
+            taskId = taskId,
+            taskName = taskName,
+            isDailyTask = true,
+            duration = duration
+        )
+        if(dailyType == DailyTaskElements.TYPE_RANGE){
+            val taskStartDate = temp[ProgressiveTaskElements.START_DATE_KEY].toString()
+            val taskEndDate = temp[ProgressiveTaskElements.END_DATE_KEY].toString()
+
+            otherTaskElement.taskStartingAt = "$taskStartDate $taskStartTime"
+            otherTaskElement.taskEndingAt = "$taskEndDate $taskEndTime"
+        }else{
+            otherTaskElement.taskStartingAt = taskStartTime
+            otherTaskElement.taskEndingAt = taskEndTime
+        }
+    }
+
+    private fun mapToOtherList(temp: HashMap<*, *>) {
+        val taskId = temp[ProgressiveTaskElements.ID_KEY].toString()
+        val taskName = temp[ProgressiveTaskElements.NAME_KEY].toString()
+        val taskStartTime = temp[ProgressiveTaskElements.START_TIME_KEY].toString()
+        val taskEndTime = temp[ProgressiveTaskElements.END_TIME_KEY].toString()
+        val taskStartDate = temp[ProgressiveTaskElements.START_DATE_KEY].toString()
+        val taskEndDate = temp[ProgressiveTaskElements.END_DATE_KEY].toString()
+        val taskDuration = temp[ProgressiveTaskElements.DURATION_KEY].toString()
+
+        val startingFrom = "$taskStartDate $taskStartTime"
+        val endingAt = "$taskEndDate $taskEndTime"
+
+        val otherTaskElement = OtherTaskAdapter.OtherTaskElements(
+            taskId = taskId,
+            taskName = taskName,
+            taskStartingAt = startingFrom,
+            taskEndingAt = endingAt,
+            duration = taskDuration
+        )
+        otherTaskArrayList.add(otherTaskElement)
+
     }
 
     private fun mapToArrayList(map: HashMap<*, *>) {
